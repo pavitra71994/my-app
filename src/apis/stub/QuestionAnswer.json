@@ -1,0 +1,68 @@
+{
+  "questionAns": [
+    {
+      "quesNo": "1",
+      "ques": "what is ur name?",
+      "ansList": [
+        {
+          "ans": "Pavitra",
+          "isAnsTrue": true
+        },
+        {
+          "ans": "Rajesh"
+        },
+        {
+          "ans": "Ram"
+        }
+      ]
+    },
+    {
+      "quesNo": "2",
+      "ques": "what is ur nickname?",
+      "ansList": [
+        {
+          "ans": "Pavitra"
+        },
+        {
+          "ans": "Rajesh"
+        },
+        {
+          "ans": "Bablu",
+          "isAnsTrue": true
+        }
+      ]
+    },
+    {
+      "quesNo": "3",
+      "ques": "where do u work?",
+      "ansList": [
+        {
+          "ans": "Pune",
+          "isAnsTrue": true
+        },
+        {
+          "ans": "Mumbai"
+        },
+        {
+          "ans": "Others"
+        }
+      ]
+    },
+    {
+      "quesNo": "4",
+      "ques": "HomeTown?",
+      "ansList": [
+        {
+          "ans": "Pune"
+        },
+        {
+          "ans": "Odisha",
+          "isAnsTrue": true
+        },
+        {
+          "ans": "Others"
+        }
+      ]
+    }
+  ]
+}

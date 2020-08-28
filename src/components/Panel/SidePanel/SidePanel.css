@@ -1,0 +1,23 @@
+.sidePanel {
+  background-color: #3094c0;
+  width: 10%;
+  float: left;
+}
+
+.sidePanelContainer {
+  display: flex;
+  width: 500px;
+}
+
+.quesNoLook {
+  cursor: pointer;
+}
+
+.quesNoLook:hover {
+  background-color: yellow;
+}
+
+.quesNoLookdiv {
+  cursor: pointer;
+  background-color: yellow;
+}

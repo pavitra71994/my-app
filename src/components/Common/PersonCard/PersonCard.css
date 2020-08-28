@@ -1,0 +1,12 @@
+.PersonCardContainer {
+  background-color: ghostwhite;
+  width: 283.2px;
+  height: 100px;
+  border: black 2px solid;
+  border-radius: 5px;
+}
+
+.baseCard {
+  display: flex;
+  flex-wrap: wrap;
+}
