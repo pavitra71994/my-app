@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import QuestionCard from "../../Common/QuestionCard/QuestionCard";
-import Footer from "../../Common/Footer/Footer";
 import "./SidePanel.css";
 import ApplicationHelper from "../../../util/ApplicationHelper";
 class SidePanel extends Component {
