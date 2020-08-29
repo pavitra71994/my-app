@@ -11,8 +11,10 @@ class QuestionCard extends Component {
     this.ApplicationHelper = new ApplicationHelper();
     this.state = {
       resultData: [],
-      radio: "",
+      radio: null,
       showResultPageFlag: false,
+      changeToPrevQflag: false,
+      changeToNextQflag: false,
     };
   }
 
@@ -27,7 +29,7 @@ class QuestionCard extends Component {
     ) : (
       <div className="quesCardContainer">
         <div className="quesCard">
-          <h1>{QuestionAnsObj.ques}</h1>
+          <div className="quesLabel">{QuestionAnsObj.ques}</div>
           {QuestionAnsObj.ansList.map((ans) => (
             <div className="ansBoxLook" key={ans.ans}>
               <input
@@ -40,8 +42,21 @@ class QuestionCard extends Component {
             </div>
           ))}
         </div>
+        {!this.props.data.isFirstQues ? (
+          <button
+            className="buttonLookL"
+            onClick={() => {
+              this.props.changeQuesHandler(this.props.data.quesNo - 1);
+            }}
+          >
+            Back
+          </button>
+        ) : (
+          ""
+        )}
         {!this.props.data.isLastQues ? (
           <button
+            className="buttonLookR"
             onClick={() =>
               this.createResultJsonData(
                 this.state.radio,
@@ -49,10 +64,16 @@ class QuestionCard extends Component {
               )
             }
           >
-            Submit
+            Next
           </button>
         ) : (
-          <button onClick={() => this.showResultPage()}>Submit</button>
+          <button
+            onClick={() =>
+              this.showResultPage(this.state.radio, this.props.data.quesNo)
+            }
+          >
+            Submit
+          </button>
         )}
       </div>
     );
@@ -64,19 +85,37 @@ class QuestionCard extends Component {
     });
   };
 
-  showResultPage() {
+  showResultPage(radioValue, quesNo) {
     this.setState({
       showResultPageFlag: true,
     });
+    this.createResultJsonData(radioValue, quesNo);
   }
 
   createResultJsonData(ans, quesNo) {
-    const ansObj = {
-      quesNo: quesNo,
-      ans: ans,
-    };
-    this.state.resultData.push(ansObj);
+    let ansObj = null;
+    if (ans) {
+      ansObj = {
+        quesNo: quesNo,
+        ans: ans,
+      };
+    }
+
+    if (this.state.resultData) {
+      this.state.resultData.map((value) => {
+        if (value.quesNo === quesNo) {
+          this.state.resultData.pop(ansObj);
+        }
+      });
+      if (ansObj) {
+        this.state.resultData.push(ansObj);
+      }
+    }
+
     console.log(this.state.resultData);
+    if (!this.props.data.isLastQues) {
+      this.props.changeQuesHandler(this.props.data.quesNo + 1);
+    }
   }
 }
 

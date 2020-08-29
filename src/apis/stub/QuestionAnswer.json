@@ -1,7 +1,7 @@
 {
   "questionAns": [
     {
-      "quesNo": "1",
+      "quesNo": 1,
       "ques": "what is ur name?",
       "ansList": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "quesNo": "2",
+      "quesNo": 2,
       "ques": "what is ur nickname?",
       "ansList": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "quesNo": "3",
+      "quesNo": 3,
       "ques": "where do u work?",
       "ansList": [
         {
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "quesNo": "4",
+      "quesNo": 4,
       "ques": "HomeTown?",
       "ansList": [
         {

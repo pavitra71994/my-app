@@ -3,9 +3,25 @@
 
 .quesCardContainer {
   height: 200px;
-  margin: auto;
+  margin-left: 5%;
   background-color: ghostwhite;
 }
 
 .quesCard {
+}
+
+.quesLabel {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.buttonLookR {
+  width: 100px;
+  cursor: pointer;
+  float: right;
+}
+
+.buttonLookL {
+  width: 100px;
+  cursor: pointer;
+  float: left;
 }

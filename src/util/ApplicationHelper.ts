@@ -17,6 +17,11 @@ class SidePanel extends Component {
   getResult(answeredQuesData: any) {
     let correctAnserSet: any = [];
     let counter = 0;
+    let resultDataObj = {
+      correctAns: 0,
+      wrongAns: 0,
+      unAnsweredQues: 0,
+    };
     {
       QuestionAnsObj.questionAns.map((value: any) => {
         const ques = value.quesNo;
@@ -33,7 +38,14 @@ class SidePanel extends Component {
         });
       });
     }
-    return counter;
+    resultDataObj = {
+      correctAns: counter,
+      wrongAns: answeredQuesData.length - counter,
+      unAnsweredQues:
+        QuestionAnsObj.questionAns.length -
+        (counter + (answeredQuesData.length - counter)),
+    };
+    return resultDataObj;
   }
 }
 

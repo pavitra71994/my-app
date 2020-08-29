@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import QuestionCard from "../../Common/QuestionCard/QuestionCard";
+import Footer from "../../Common/Footer/Footer";
 import "./SidePanel.css";
 import ApplicationHelper from "../../../util/ApplicationHelper";
 class SidePanel extends Component {
@@ -8,7 +9,7 @@ class SidePanel extends Component {
     this.ApplicationHelper = new ApplicationHelper();
     this.state = {
       openQuesCardFlag: false,
-      quesNumber: "1",
+      quesNumber: 1,
       selectedDivIndex: "",
     };
     this.openQuestionCard = this.openQuestionCard.bind(this);
@@ -16,6 +17,7 @@ class SidePanel extends Component {
   render() {
     const QuestionAnsObj = this.props.data.QuestionAnsObj;
     console.log("ani" + QuestionAnsObj.questionAns.length);
+    console.log("render" + this.state.quesNumber);
     return (
       <div className="sidePanelContainer">
         <div className="sidePanel">
@@ -39,10 +41,12 @@ class SidePanel extends Component {
             ),
             quesNo: this.state.quesNumber,
             isLastQues:
-              QuestionAnsObj.questionAns.length + "" === this.state.quesNumber
+              QuestionAnsObj.questionAns.length === this.state.quesNumber
                 ? true
                 : false,
+            isFirstQues: this.state.quesNumber === 1 ? true : false,
           }}
+          changeQuesHandler={this.openQuestionCard}
         />
       </div>
     );
