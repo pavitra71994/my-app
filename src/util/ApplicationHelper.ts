@@ -47,6 +47,26 @@ class SidePanel extends Component {
     };
     return resultDataObj;
   }
+
+  getSelectedAnswer(resultData: any, quesNo: any) {
+    let selectedAns = "";
+    resultData.map((value: any) => {
+      if (value.quesNo === quesNo) {
+        selectedAns = value.ans;
+      }
+    });
+    return selectedAns;
+  }
+
+  getSelectedAnswerDivId(resultData: any, quesNo: any) {
+    let selectedAnsDivId = "";
+    resultData.map((value: any) => {
+      if (value.quesNo === quesNo) {
+        selectedAnsDivId = value.ansDiv;
+      }
+    });
+    return selectedAnsDivId;
+  }
 }
 
 export default SidePanel;

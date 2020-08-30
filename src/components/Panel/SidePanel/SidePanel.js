@@ -12,6 +12,7 @@ class SidePanel extends Component {
       selectedDivIndex: "",
     };
     this.openQuestionCard = this.openQuestionCard.bind(this);
+    this.child = React.createRef();
   }
   render() {
     const QuestionAnsObj = this.props.data.QuestionAnsObj;
@@ -46,6 +47,7 @@ class SidePanel extends Component {
             isFirstQues: this.state.quesNumber === 1 ? true : false,
           }}
           changeQuesHandler={this.openQuestionCard}
+          ref={this.child}
         />
       </div>
     );

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./QuestionCard.css";
+import "./QuestionCard.scss";
 import ResultCard from "../../Common/ResultCard/ResultCard";
+import Modal from "../Modal/ModalBox";
 import ApplicationHelper from "../../../util/ApplicationHelper";
+import { Button } from "react-bootstrap";
 
 class QuestionCard extends Component {
   constructor(props) {
@@ -13,13 +15,29 @@ class QuestionCard extends Component {
       resultData: [],
       radio: null,
       showResultPageFlag: false,
-      changeToPrevQflag: false,
-      changeToNextQflag: false,
+      answerCounter: 0,
+      questionNumber: null,
+      selectedAnswer: null,
+      show: false,
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      selectedAnswer: this.ApplicationHelper.getSelectedAnswer(
+        this.state.resultData,
+        this.props.data.quesNo
+      ),
+    });
   }
 
   render() {
     const QuestionAnsObj = this.props.data.QuestionAnsObj;
+    const sel = this.ApplicationHelper.getSelectedAnswer(
+      this.state.resultData,
+      this.props.data.quesNo
+    );
+
     return this.state.showResultPageFlag ? (
       <ResultCard
         data={{
@@ -30,59 +48,135 @@ class QuestionCard extends Component {
       <div className="quesCardContainer">
         <div className="quesCard">
           <div className="quesLabel">{QuestionAnsObj.ques}</div>
-          {QuestionAnsObj.ansList.map((ans) => (
-            <div className="ansBoxLook" key={ans.ans}>
-              <input
-                type="radio"
-                value={ans.ans}
-                checked={this.state.radio === ans.ans}
+          <div className="ansBox">
+            {QuestionAnsObj.ansList.map((ans) => (
+              <button
+                className={
+                  sel !== "" && sel === ans.ans
+                    ? "skewBtn blue BtnBorder"
+                    : "skewBtn blue"
+                }
+                key={ans.ans}
+                id={"ans" + ans.ans + this.props.data.quesNo}
                 onClick={this.onRadioChange}
-              ></input>
-              {ans.ans}
-            </div>
-          ))}
+              >
+                {/* <input
+                  type="radio"
+                  value={ans.ans}
+                  checked={this.state.radio === ans.ans}
+                ></input> */}
+                {ans.ans}
+              </button>
+            ))}
+          </div>
         </div>
-        {!this.props.data.isFirstQues ? (
-          <button
-            className="buttonLookL"
-            onClick={() => {
-              this.props.changeQuesHandler(this.props.data.quesNo - 1);
-            }}
-          >
-            Back
-          </button>
-        ) : (
-          ""
-        )}
-        {!this.props.data.isLastQues ? (
-          <button
-            className="buttonLookR"
-            onClick={() =>
-              this.createResultJsonData(
-                this.state.radio,
-                this.props.data.quesNo
-              )
-            }
-          >
-            Next
-          </button>
-        ) : (
-          <button
-            onClick={() =>
+        <div className="buttonContainer">
+          {!this.props.data.isFirstQues ? (
+            <Button
+              variant="secondary"
+              size="lg"
+              className="buttonLookL"
+              onClick={() => {
+                this.props.changeQuesHandler(this.props.data.quesNo - 1);
+                this.setState({
+                  radio: null,
+                  selectedAnswer: this.ApplicationHelper.getSelectedAnswer(
+                    this.state.resultData,
+                    this.props.data.quesNo + 1
+                  ),
+                  questionNumber: this.props.data.quesNo,
+                });
+              }}
+            >
+              Back
+            </Button>
+          ) : (
+            ""
+          )}
+          {!this.props.data.isLastQues ? (
+            <Button
+              variant="secondary"
+              size="lg"
+              className="buttonLookR"
+              onClick={() =>
+                this.createResultJsonData(
+                  this.state.radio,
+                  this.props.data.quesNo
+                )
+              }
+            >
+              Next
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              size="lg"
+              className="buttonLookR"
+              onClick={() => this.showModal()}
+            >
+              Submit
+            </Button>
+          )}
+        </div>
+        {this.state.show ? (
+          <Modal
+            show={this.state.show}
+            handleClose={this.hideModal}
+            showPage={() =>
               this.showResultPage(this.state.radio, this.props.data.quesNo)
             }
-          >
-            Submit
-          </button>
+          ></Modal>
+        ) : (
+          ""
         )}
       </div>
     );
   }
 
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
   onRadioChange = (e) => {
-    this.setState({
-      radio: e.target.value,
-    });
+    console.log(e);
+
+    if (
+      this.state.radio !== e.target.innerHTML &&
+      this.state.radio === null &&
+      e.target.style.border === ""
+    ) {
+      const divId = this.ApplicationHelper.getSelectedAnswerDivId(
+        this.state.resultData,
+        this.props.data.quesNo
+      );
+      if (divId !== "" && divId) {
+        document.getElementById(divId).style.border = "0px solid #1976d2";
+      }
+      document.getElementById(e.target.id).style.border = "2px solid #1976d2";
+      this.setState({
+        radio: e.target.innerHTML,
+        answerCounter: e.target.id,
+      });
+    } else if (
+      this.state.radio !== e.target.innerHTML &&
+      e.target.style.border === ""
+    ) {
+      document.getElementById(this.state.answerCounter).style.border = "";
+      document.getElementById(e.target.id).style.border = "2px solid #1976d2";
+      this.setState({
+        radio: e.target.innerHTML,
+        answerCounter: e.target.id,
+      });
+    } else {
+      document.getElementById(e.target.id).style.border = "";
+      this.setState({
+        radio: null,
+      });
+    }
   };
 
   showResultPage(radioValue, quesNo) {
@@ -98,12 +192,13 @@ class QuestionCard extends Component {
       ansObj = {
         quesNo: quesNo,
         ans: ans,
+        ansDiv: this.state.answerCounter,
       };
     }
 
     if (this.state.resultData) {
       this.state.resultData.map((value) => {
-        if (value.quesNo === quesNo) {
+        if (value.quesNo === quesNo && ansObj) {
           this.state.resultData.pop(ansObj);
         }
       });
@@ -116,6 +211,15 @@ class QuestionCard extends Component {
     if (!this.props.data.isLastQues) {
       this.props.changeQuesHandler(this.props.data.quesNo + 1);
     }
+
+    this.setState({
+      radio: null,
+      selectedAnswer: this.ApplicationHelper.getSelectedAnswer(
+        this.state.resultData,
+        this.props.data.quesNo + 1
+      ),
+      questionNumber: this.props.data.quesNo,
+    });
   }
 }
 

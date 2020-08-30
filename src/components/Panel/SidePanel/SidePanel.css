@@ -6,11 +6,16 @@
 
 .sidePanelContainer {
   display: flex;
-  width: 500px;
+  width: 700px;
 }
 
 .quesNoLook {
   cursor: pointer;
+  cursor: pointer;
+  font-size: 35px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .quesNoLook:hover {
