@@ -1,0 +1,44 @@
+.passFailLabel {
+  color: green;
+  font-size: 34px;
+  font-weight: bold;
+  width: 90%;
+  background-color: white;
+  margin: auto;
+  text-align: center;
+  margin-top: 17%;
+}
+
+.resultBoxLook {
+  width: 50%;
+  height: 50%;
+  margin-bottom: 1%;
+}
+
+.resultBoxLook .recharts-wrapper {
+  background-color: white;
+  text-align: center;
+  margin-top: 2%;
+  margin-left: 2%;
+  height: 92% !important;
+  width: 98% !important;
+}
+
+.resultBoxLook .recharts-surface {
+  height: 92% !important;
+  width: 98% !important;
+}
+
+.resultCard {
+  display: flex;
+}
+
+.passFailContainer {
+  background-color: white;
+  background-color: white;
+  width: 49%;
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+}

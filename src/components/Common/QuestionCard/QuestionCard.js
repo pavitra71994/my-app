@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./QuestionCard.scss";
-import ResultCard from "../../Common/ResultCard/ResultCard";
 import Modal from "../Modal/ModalBox";
 import ApplicationHelper from "../../../util/ApplicationHelper";
 import { Button } from "react-bootstrap";
+import TimerCard from "../../Common/TimerCard/TimerCard";
 
 class QuestionCard extends Component {
   constructor(props) {
@@ -11,21 +11,23 @@ class QuestionCard extends Component {
     this.onRadioChange = this.onRadioChange.bind(this);
     this.createResultJsonData = this.createResultJsonData.bind(this);
     this.ApplicationHelper = new ApplicationHelper();
+    this.showResultPage = this.showResultPage.bind(this);
+    //this.countdownHandler = this.countdownHandler.bind(this);
     this.state = {
-      resultData: [],
       radio: null,
-      showResultPageFlag: false,
+
       answerCounter: 0,
       questionNumber: null,
       selectedAnswer: null,
       show: false,
+      //countdown: 60,
     };
   }
 
   componentDidMount() {
     this.setState({
       selectedAnswer: this.ApplicationHelper.getSelectedAnswer(
-        this.state.resultData,
+        this.props.data.resultData,
         this.props.data.quesNo
       ),
     });
@@ -34,41 +36,38 @@ class QuestionCard extends Component {
   render() {
     const QuestionAnsObj = this.props.data.QuestionAnsObj;
     const sel = this.ApplicationHelper.getSelectedAnswer(
-      this.state.resultData,
+      this.props.data.resultData,
       this.props.data.quesNo
     );
 
-    return this.state.showResultPageFlag ? (
-      <ResultCard
-        data={{
-          result: this.ApplicationHelper.getResult(this.state.resultData),
-        }}
-      />
-    ) : (
+    return (
       <div className="quesCardContainer">
         <div className="quesCard">
-          <div className="quesLabel">{QuestionAnsObj.ques}</div>
-          <div className="ansBox">
-            {QuestionAnsObj.ansList.map((ans) => (
-              <button
-                className={
-                  sel !== "" && sel === ans.ans
-                    ? "skewBtn blue BtnBorder"
-                    : "skewBtn blue"
-                }
-                key={ans.ans}
-                id={"ans" + ans.ans + this.props.data.quesNo}
-                onClick={this.onRadioChange}
-              >
-                {/* <input
+          <div className="quesAnsCard">
+            <div className="quesLabel">{QuestionAnsObj.ques}</div>
+            <div className="ansBox">
+              {QuestionAnsObj.ansList.map((ans) => (
+                <button
+                  className={
+                    sel !== "" && sel === ans.ans
+                      ? "skewBtn blue BtnBorder"
+                      : "skewBtn blue"
+                  }
+                  key={ans.ans}
+                  id={"ans" + ans.ans + this.props.data.quesNo}
+                  onClick={this.onRadioChange}
+                >
+                  {/* <input
                   type="radio"
                   value={ans.ans}
                   checked={this.state.radio === ans.ans}
                 ></input> */}
-                {ans.ans}
-              </button>
-            ))}
+                  {ans.ans}
+                </button>
+              ))}
+            </div>
           </div>
+          <TimerCard timerHandler={this.showResultPage} />
         </div>
         <div className="buttonContainer">
           {!this.props.data.isFirstQues ? (
@@ -81,7 +80,7 @@ class QuestionCard extends Component {
                 this.setState({
                   radio: null,
                   selectedAnswer: this.ApplicationHelper.getSelectedAnswer(
-                    this.state.resultData,
+                    this.props.data.resultData,
                     this.props.data.quesNo + 1
                   ),
                   questionNumber: this.props.data.quesNo,
@@ -112,6 +111,7 @@ class QuestionCard extends Component {
               variant="secondary"
               size="lg"
               className="buttonLookR"
+              id="submit"
               onClick={() => this.showModal()}
             >
               Submit
@@ -150,7 +150,7 @@ class QuestionCard extends Component {
       e.target.style.border === ""
     ) {
       const divId = this.ApplicationHelper.getSelectedAnswerDivId(
-        this.state.resultData,
+        this.props.data.resultData,
         this.props.data.quesNo
       );
       if (divId !== "" && divId) {
@@ -180,9 +180,7 @@ class QuestionCard extends Component {
   };
 
   showResultPage(radioValue, quesNo) {
-    this.setState({
-      showResultPageFlag: true,
-    });
+    this.props.showResultPage();
     this.createResultJsonData(radioValue, quesNo);
   }
 
@@ -196,18 +194,16 @@ class QuestionCard extends Component {
       };
     }
 
-    if (this.state.resultData) {
-      this.state.resultData.map((value) => {
-        if (value.quesNo === quesNo && ansObj) {
-          this.state.resultData.pop(ansObj);
-        }
-      });
+    if (this.props.data.resultData) {
+      if (this.props.data.resultData.has(quesNo) && ansObj) {
+        this.props.deleteResultData(quesNo);
+      }
       if (ansObj) {
-        this.state.resultData.push(ansObj);
+        this.props.setResultData(quesNo, ansObj);
       }
     }
 
-    console.log(this.state.resultData);
+    console.log(this.props.data.resultData);
     if (!this.props.data.isLastQues) {
       this.props.changeQuesHandler(this.props.data.quesNo + 1);
     }
@@ -215,7 +211,7 @@ class QuestionCard extends Component {
     this.setState({
       radio: null,
       selectedAnswer: this.ApplicationHelper.getSelectedAnswer(
-        this.state.resultData,
+        this.props.data.resultData,
         this.props.data.quesNo + 1
       ),
       questionNumber: this.props.data.quesNo,

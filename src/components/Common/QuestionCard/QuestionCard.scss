@@ -9,16 +9,19 @@
 }
 
 .quesCardContainer {
-  height: 200px;
-  margin-left: 5%;
-  background-color: ghostwhite;
-  width: 700px;
+  background-color: #f8f8ff;
+  width: 80%;
 }
 
 .quesCard {
   margin-bottom: 50px;
+  display: flex;
+  width: 100%;
 }
 
+.quesAnsCard {
+  width: 88%;
+}
 .quesLabel {
   font-size: 24px;
   font-family: "Lato", sans-serif;

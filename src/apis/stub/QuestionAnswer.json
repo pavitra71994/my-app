@@ -63,6 +63,38 @@
           "ans": "Others"
         }
       ]
+    },
+    {
+      "quesNo": 5,
+      "ques": "Current City?",
+      "ansList": [
+        {
+          "ans": "Vadodara"
+        },
+        {
+          "ans": "Naliya",
+          "isAnsTrue": true
+        },
+        {
+          "ans": "Others"
+        }
+      ]
+    },
+    {
+      "quesNo": 6,
+      "ques": "Birth Year?",
+      "ansList": [
+        {
+          "ans": "1994"
+        },
+        {
+          "ans": "1986",
+          "isAnsTrue": true
+        },
+        {
+          "ans": "2000"
+        }
+      ]
     }
   ]
 }

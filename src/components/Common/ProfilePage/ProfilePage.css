@@ -1,6 +1,11 @@
 .profilePageContainer {
-  background-color: #1ac4a2;
+  /* background-color: #1ac4a2; */
+  background: rgb(48, 148, 192);
+  background: linear-gradient(
+    180deg,
+    rgba(48, 148, 192, 1) 0%,
+    rgba(26, 196, 162, 1) 100%
+  );
   margin: auto;
-  max-width: 800px;
-  border-radius: 20px;
+  max-width: 900px;
 }

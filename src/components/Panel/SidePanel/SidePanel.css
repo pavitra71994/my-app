@@ -1,25 +1,70 @@
 .sidePanel {
-  background-color: #3094c0;
-  width: 10%;
-  float: left;
+  width: 20%;
+  display: flex;
+  border: 1px grey solid;
+  flex-wrap: wrap;
+  background-color: #f8f8ff;
 }
 
 .sidePanelContainer {
   display: flex;
-  width: 700px;
+  /* width: 700px; */
+  background-color: #fcfcfd;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 300px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .quesNoLook {
   cursor: pointer;
-  cursor: pointer;
-  font-size: 35px;
+  font-size: 13px;
   font-family: "Lato", sans-serif;
   text-align: center;
   transition: all 0.3s ease-in-out;
+  border: 2px solid #1976d2;
+  height: 24px;
+  width: 24px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .quesNoLook:hover {
   background-color: yellow;
+}
+
+.ansQuesNoLook {
+  cursor: pointer;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid #1976d2;
+  height: 24px;
+  width: 24px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: green;
+  color: white;
+}
+
+.unAnsQuesNoLook {
+  cursor: pointer;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid #1976d2;
+  height: 24px;
+  width: 24px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: grey;
+  color: white;
 }
 
 .quesNoLookdiv {

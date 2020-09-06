@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import "./PersonCard.css";
+import image from "../../../svgIcons/16.jpg";
 
 class PersonCard extends Component {
   render() {
-    const item = this.props.data.items;
     return (
-      <div className="baseCard">
-        {item.map((item) => (
-          <div className="PersonCardContainer" key={item.name}>
-            {item.name} {item.price}
+      <div className="PersonCardContainer">
+        <div className="imgBox">
+          <img src={image}></img>
+        </div>
+        <div className="basicInfoBox">
+          <div className="nameLabel">Pavitra Kumar Nayak</div>
+          <div className="otherDetailLook">
+            <div className="detailsLook">1201212</div>
+            <div className="detailsLook">Noida</div>
+            <div className="detailsLook">pavitrank1@gmail.com</div>
           </div>
-        ))}
+          <div className="dateLook">10th March 2020</div>
+        </div>
       </div>
     );
   }

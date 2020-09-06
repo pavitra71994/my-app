@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import ProfilePage from "./components/Common/ProfilePage/ProfilePage";
+import ExamPanel from "./components/Panel/ExamPanel/ExamPanel";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProfilePage />
+    <ExamPanel />
   </React.StrictMode>,
   document.getElementById("root")
 );

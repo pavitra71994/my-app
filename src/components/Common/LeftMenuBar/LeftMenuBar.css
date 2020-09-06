@@ -1,0 +1,21 @@
+.menuPanel {
+  background-color: #3094c0;
+  width: 10%;
+  float: left;
+  width: 150px;
+}
+
+.menuLook {
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+  transition: all 0.3s ease-in-out;
+  color: aliceblue;
+  font-weight: 700;
+  line-height: 28px;
+  margin-left: 10px;
+}
+
+.menuLook:hover {
+  background-color: #0575ac;
+}

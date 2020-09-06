@@ -31,40 +31,46 @@ class SidePanel extends Component {
             ans = ansObj.ans;
           }
         });
-        answeredQuesData.map((answrdObj: any) => {
-          if (answrdObj.quesNo === ques && answrdObj.ans === ans) {
-            counter = counter + 1;
+        if (answeredQuesData) {
+          for (let [key, value] of answeredQuesData) {
+            if (key === ques && value.ans === ans) {
+              counter = counter + 1;
+            }
           }
-        });
+        }
       });
     }
     resultDataObj = {
       correctAns: counter,
-      wrongAns: answeredQuesData.length - counter,
+      wrongAns: answeredQuesData.size - counter,
       unAnsweredQues:
         QuestionAnsObj.questionAns.length -
-        (counter + (answeredQuesData.length - counter)),
+        (counter + (answeredQuesData.size - counter)),
     };
     return resultDataObj;
   }
 
   getSelectedAnswer(resultData: any, quesNo: any) {
-    let selectedAns = "";
-    resultData.map((value: any) => {
-      if (value.quesNo === quesNo) {
-        selectedAns = value.ans;
+    let selectedAns;
+    console.log("ram" + resultData);
+    if (resultData) {
+      if (resultData.has(quesNo)) {
+        selectedAns = resultData.get(quesNo);
+        selectedAns = selectedAns.ans;
       }
-    });
+    }
+
     return selectedAns;
   }
 
   getSelectedAnswerDivId(resultData: any, quesNo: any) {
-    let selectedAnsDivId = "";
-    resultData.map((value: any) => {
-      if (value.quesNo === quesNo) {
-        selectedAnsDivId = value.ansDiv;
+    let selectedAnsDivId;
+    if (resultData) {
+      if (resultData.has(quesNo)) {
+        selectedAnsDivId = resultData.get(quesNo);
+        selectedAnsDivId = selectedAnsDivId.ansDiv;
       }
-    });
+    }
     return selectedAnsDivId;
   }
 }

@@ -1,13 +1,24 @@
 import React, { Component } from "react";
+import "./ResultCard.css";
+
+import ReactPie from "../ReactPie/ReactPie";
 
 class ResultCard extends Component {
   render() {
-    console.log(this.props.data.result);
+    const resultObj = [
+      { name: "Correct", value: this.props.data.result.correctAns },
+      { name: "Wrong", value: this.props.data.result.wrongAns },
+      { name: "UnAnswered", value: this.props.data.result.unAnsweredQues },
+    ];
+
     return (
-      <div>
-        <div>Correct :: {this.props.data.result.correctAns}</div>
-        <div>Wrong :: {this.props.data.result.wrongAns}</div>
-        <div>UnAnswered :: {this.props.data.result.unAnsweredQues}</div>
+      <div className="resultCard">
+        <div className="resultBoxLook">
+          <ReactPie data={{ resultObj }} />
+        </div>
+        <div className="passFailContainer">
+          <div className="passFailLabel">Pass</div>
+        </div>
       </div>
     );
   }
