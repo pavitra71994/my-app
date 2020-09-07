@@ -12,21 +12,11 @@ class SidePanel extends Component {
       openQuesCardFlag: false,
       quesNumber: 1,
       selectedDivIndex: "",
-      resultData: new Map(),
       showResultPageFlag: false,
     };
     this.openQuestionCard = this.openQuestionCard.bind(this);
-    this.deleteResultData = this.deleteResultData.bind(this);
-    this.setResultData = this.setResultData.bind(this);
     this.showResultPage = this.showResultPage.bind(this);
     this.child = React.createRef();
-  }
-
-  setResultData(quesNo, ansObj) {
-    this.state.resultData.set(quesNo, ansObj);
-  }
-  deleteResultData(quesNo) {
-    this.state.resultData.delete(quesNo);
   }
 
   showResultPage(radioValue, quesNo) {
@@ -43,7 +33,7 @@ class SidePanel extends Component {
     return this.state.showResultPageFlag ? (
       <ResultCard
         data={{
-          result: this.ApplicationHelper.getResult(this.state.resultData),
+          result: this.ApplicationHelper.getResult(this.props.data.resultData),
         }}
       />
     ) : (
@@ -60,12 +50,12 @@ class SidePanel extends Component {
                 ? true
                 : false,
             isFirstQues: this.state.quesNumber === 1 ? true : false,
-            resultData: this.state.resultData,
+            resultData: this.props.data.resultData,
             showResultPage: this.state.showResultPage,
           }}
           changeQuesHandler={this.openQuestionCard}
-          deleteResultData={this.deleteResultData}
-          setResultData={this.setResultData}
+          deleteResultData={this.props.deleteResultData}
+          setResultData={this.props.setResultData}
           showResultPage={this.showResultPage}
           ref={this.child}
         />
@@ -90,7 +80,7 @@ class SidePanel extends Component {
 
   toggleQuesClr(quesNo) {
     const sel = this.ApplicationHelper.getSelectedAnswer(
-      this.state.resultData,
+      this.props.data.resultData,
       quesNo
     );
     if (sel && sel !== null && sel !== "") {

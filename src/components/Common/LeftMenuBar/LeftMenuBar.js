@@ -7,12 +7,21 @@ class LeftMenuBar extends Component {
     return (
       <div className="menuPanel">
         {lmenuOptionData.item.map((item) => (
-          <div key={item.data} className="menuLook">
+          <div
+            key={item.data}
+            className="menuLook"
+            onClick={() => this.handleClick(item.data)}
+          >
             {item.data}
           </div>
         ))}
       </div>
     );
+  }
+  handleClick(eventType) {
+    if (eventType === "Exam Overview") {
+      this.props.showExamOverviewHandler();
+    }
   }
 }
 

@@ -1,0 +1,28 @@
+.OverQuesCardBox {
+  width: 375px;
+  background-color: aliceblue;
+  margin: 5px;
+  height: 200px;
+}
+
+.OverQuesCardQuesLabel {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.OverQuesCardAnsBox {
+  margin-left: 5%;
+}
+
+.OverQuesCardAnsLabel {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tickIcon {
+  width: 26px;
+  height: 25px;
+}
