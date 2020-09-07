@@ -1,17 +1,26 @@
 .sidePanel {
-  width: 20%;
   display: flex;
-  border: 1px grey solid;
   flex-wrap: wrap;
+}
+
+.quesNoWrapBox {
+  width: 25px;
+  height: 25px;
+}
+
+.sidePanelCardBox {
+  border: 1px grey solid;
+  width: 20%;
+  height: 100%;
   background-color: #f8f8ff;
 }
 
 .sidePanelContainer {
   display: flex;
   /* width: 700px; */
-  background-color: #fcfcfd;
+  /* background-color: #fcfcfd; */
   margin-right: 10px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   height: 300px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -47,7 +56,7 @@
   border-radius: 20px;
   margin-top: 10px;
   margin-left: 10px;
-  background-color: green;
+  background-color: #7eced4;
   color: white;
 }
 
@@ -63,8 +72,9 @@
   border-radius: 20px;
   margin-top: 10px;
   margin-left: 10px;
-  background-color: grey;
+  background-color: #fb6f4e;
   color: white;
+  content: "\2605";
 }
 
 .quesNoLookdiv {

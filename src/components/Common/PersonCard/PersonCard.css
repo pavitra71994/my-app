@@ -16,16 +16,20 @@
   flex-wrap: wrap;
 }
 
+.imgBox {
+  width: 20%;
+}
+
 .imgBox img {
   width: 150px;
   height: 150px;
-  border-radius: 84px;
-  margin-left: 10%;
+  margin-left: 12%;
   border-radius: 80px;
+  margin-top: 7%;
 }
 
 .basicInfoBox {
-  width: 100%;
+  width: 50%;
   margin-left: 50px;
 }
 

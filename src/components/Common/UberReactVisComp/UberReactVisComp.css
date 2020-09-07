@@ -1,0 +1,7 @@
+.uberReactComp
+  .rv-xy-plot__series
+  rv-xy-plot__series--arc
+  .rv-xy-plot__series--arc__animation-wrapper {
+  width: 200px;
+  height: 200px;
+}

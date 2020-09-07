@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./PersonCard.css";
 import image from "../../../svgIcons/16.jpg";
+import UberReactVisComp from "../UberReactVisComp/UberReactVisComp";
 
 class PersonCard extends Component {
   render() {
@@ -18,6 +19,7 @@ class PersonCard extends Component {
           </div>
           <div className="dateLook">10th March 2020</div>
         </div>
+        <UberReactVisComp />
       </div>
     );
   }

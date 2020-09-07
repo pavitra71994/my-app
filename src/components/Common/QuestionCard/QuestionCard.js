@@ -4,6 +4,8 @@ import Modal from "../Modal/ModalBox";
 import ApplicationHelper from "../../../util/ApplicationHelper";
 import { Button } from "react-bootstrap";
 import TimerCard from "../../Common/TimerCard/TimerCard";
+import help from "../../../svgIcons/help.svg";
+import checkIcon from "../../../svgIcons/check.svg";
 
 class QuestionCard extends Component {
   constructor(props) {
@@ -44,7 +46,11 @@ class QuestionCard extends Component {
       <div className="quesCardContainer">
         <div className="quesCard">
           <div className="quesAnsCard">
-            <div className="quesLabel">{QuestionAnsObj.ques}</div>
+            <div className="svgQuesContainer">
+              <img className="svgIconBox" src={help}></img>
+              <div className="quesLabel">{QuestionAnsObj.ques}</div>
+            </div>
+
             <div className="ansBox">
               {QuestionAnsObj.ansList.map((ans) => (
                 <button

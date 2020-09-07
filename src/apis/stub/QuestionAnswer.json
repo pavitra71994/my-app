@@ -69,11 +69,11 @@
       "ques": "Current City?",
       "ansList": [
         {
-          "ans": "Vadodara"
+          "ans": "Vadodara",
+          "isAnsTrue": true
         },
         {
-          "ans": "Naliya",
-          "isAnsTrue": true
+          "ans": "Naliya"
         },
         {
           "ans": "Others"
@@ -85,11 +85,11 @@
       "ques": "Birth Year?",
       "ansList": [
         {
-          "ans": "1994"
+          "ans": "1994",
+          "isAnsTrue": true
         },
         {
-          "ans": "1986",
-          "isAnsTrue": true
+          "ans": "1986"
         },
         {
           "ans": "2000"

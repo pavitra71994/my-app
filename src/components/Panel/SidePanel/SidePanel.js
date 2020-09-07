@@ -69,18 +69,20 @@ class SidePanel extends Component {
           showResultPage={this.showResultPage}
           ref={this.child}
         />
-        <div className="sidePanel">
-          {QuestionAnsObj.questionAns.map((item) => (
-            <div
-              key={item.quesNo}
-              id={item.quesNo}
-              class="quesNo"
-              className={this.toggleQuesClr(item.quesNo)}
-              onClick={(e) => this.openQuestionCard(item.quesNo)}
-            >
-              {item.quesNo}
-            </div>
-          ))}
+        <div className="sidePanelCardBox">
+          <div className="sidePanel">
+            {QuestionAnsObj.questionAns.map((item) => (
+              <div
+                key={item.quesNo}
+                id={item.quesNo}
+                class="quesNo"
+                className={this.toggleQuesClr(item.quesNo)}
+                onClick={(e) => this.openQuestionCard(item.quesNo)}
+              >
+                {item.quesNo}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
