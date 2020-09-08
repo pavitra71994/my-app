@@ -19,7 +19,11 @@ class Login extends Component {
 
   handleLogout() {
     Cookies.remove("authCookie");
+    console.log("inside handlelogout > login.js");
     if (!Cookies.get("authCookie")) {
+      console.log(
+        "inside handlelogout > login.js >checking cookie after removing"
+      );
       this.setState({ isAuth: false });
     }
   }
