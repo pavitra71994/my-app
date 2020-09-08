@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import Cookies from "js-cookie";
 import ExamPanel from "../../Panel/ExamPanel/ExamPanel";
 import LoginForm from "../LoginForm/LoginForm";
+import GlobalNav from "../../Common/GlobalNav/GlobalNav";
 const PersonResponse = require("../../../apis/stub/profiledata.json");
 
 class Login extends Component {
@@ -15,6 +16,13 @@ class Login extends Component {
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout() {
+    Cookies.remove("authCookie");
+    if (!Cookies.get("authCookie")) {
+      this.setState({ isAuth: false });
+    }
   }
 
   componentDidMount() {
@@ -45,9 +53,10 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Button variant="secondary" size="lg" onClick={this.handleLogout}>
-          Logout
-        </Button>
+        <GlobalNav
+          handleLogout={this.handleLogout}
+          handleLogin={this.handleLogin}
+        />
         {this.state.isAuth ? (
           <ExamPanel />
         ) : (
@@ -68,13 +77,6 @@ class Login extends Component {
     ) {
       Cookies.set("authCookie", "value", { expires: 1 / 96, path: "" });
       this.setState({ isAuth: true });
-    }
-  }
-
-  handleLogout() {
-    Cookies.remove("authCookie");
-    if (!Cookies.get("authCookie")) {
-      this.setState({ isAuth: false });
     }
   }
 }

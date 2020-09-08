@@ -7,6 +7,7 @@ import {
   Button,
   FormControl,
 } from "react-bootstrap";
+import Cookies from "js-cookie";
 
 class GlobalNav extends Component {
   render() {
@@ -20,7 +21,17 @@ class GlobalNav extends Component {
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">Link</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item>
+                  {Cookies.get("authCookie") ? (
+                    <Button size="lg" onClick={this.props.handleLogout}>
+                      Logout
+                    </Button>
+                  ) : (
+                    <Button size="lg" onClick={this.props.handleLogin}>
+                      Login
+                    </Button>
+                  )}
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
