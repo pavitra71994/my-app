@@ -12,17 +12,14 @@ class SidePanel extends Component {
       openQuesCardFlag: false,
       quesNumber: 1,
       selectedDivIndex: "",
-      showResultPageFlag: false,
     };
     this.openQuestionCard = this.openQuestionCard.bind(this);
     this.showResultPage = this.showResultPage.bind(this);
     this.child = React.createRef();
   }
 
-  showResultPage(radioValue, quesNo) {
-    this.setState({
-      showResultPageFlag: true,
-    });
+  showResultPage() {
+    this.props.showResultPage();
   }
   render() {
     const QuestionAnsObj = this.props.data.QuestionAnsObj;
@@ -30,7 +27,7 @@ class SidePanel extends Component {
     console.log("render" + this.state.quesNumber);
     let quesNoLook;
 
-    return this.state.showResultPageFlag ? (
+    return this.props.data.showResultPageFlag ? (
       <ResultCard
         data={{
           result: this.ApplicationHelper.getResult(this.props.data.resultData),

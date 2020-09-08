@@ -10,7 +10,10 @@ class ExamOverviewPanel extends Component {
         {QuestionAnsObj.questionAns.map((item) => (
           <div key={item.quesNo} id={item.quesNo}>
             <OverviewQuestionCard
-              data={{ ques: item, resultData: this.props.data.resultData }}
+              data={{
+                ques: item,
+                resultData: this.props.data.resultData,
+              }}
             />
           </div>
         ))}

@@ -1,10 +1,12 @@
 {
-    "profile" : [
-        {
-            "name" : "Pavitra Kumar Nayak",
-            "country" : "India",
-            "company" : "Accenture",
-            "image" : ""
-        }
-    ]
+  "profile": [
+    {
+      "name": "Pavitra Kumar Nayak",
+      "country": "India",
+      "company": "Accenture",
+      "image": "",
+      "email": "pavitrank1@gmail.com",
+      "password": "hellohibyebye"
+    }
+  ]
 }

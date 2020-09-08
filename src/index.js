@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import ExamPanel from "./components/Panel/ExamPanel/ExamPanel";
+import Login from "./components/Common/Login/Login";
+import GlobalNav from "./components/Common/GlobalNav";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ExamPanel />
+    <GlobalNav />
+    <Login />
   </React.StrictMode>,
   document.getElementById("root")
 );
