@@ -20,6 +20,7 @@ class Login extends Component {
   handleLogout() {
     Cookies.remove("authCookie");
     console.log("inside handlelogout > login.js");
+    console.log("cookie value > >" + Cookies.get("authCookie"));
     if (!Cookies.get("authCookie")) {
       console.log(
         "inside handlelogout > login.js >checking cookie after removing"
