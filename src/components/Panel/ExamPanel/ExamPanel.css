@@ -12,6 +12,11 @@
   display: flex;
 }
 
+.progressBar {
+  width: 350px;
+  margin: auto;
+  margin-top: 20%;
+}
 .innerContainer {
   background-color: #d1d6da;
   width: 100%;

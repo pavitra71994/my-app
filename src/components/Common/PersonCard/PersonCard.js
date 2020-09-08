@@ -19,7 +19,7 @@ class PersonCard extends Component {
           </div>
           <div className="dateLook">10th March 2020</div>
         </div>
-        <UberReactVisComp />
+        {/* <UberReactVisComp /> */}
       </div>
     );
   }
