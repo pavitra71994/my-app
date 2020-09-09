@@ -18,11 +18,12 @@ class Login extends Component {
   }
 
   handleLogout() {
-    const url = window.location.hostname;
-    console.log(url);
+    const domain = window.location.hostname;
+    const path = window.location.pathname;
+    console.log(path + " >>>>" + domain);
     Cookies.remove("authCookie", {
-      path: "",
-      domain: url,
+      path: path,
+      domain: domain,
     });
     console.log("inside handlelogout > login.js");
     console.log("cookie value > >" + Cookies.get("authCookie"));
@@ -76,6 +77,8 @@ class Login extends Component {
   }
 
   handleLogin(email, password) {
+    const domain = window.location.hostname;
+    const path = window.location.pathname;
     if (
       email &&
       password &&
@@ -84,7 +87,11 @@ class Login extends Component {
       email === this.state.personAuthData.profile[0].email &&
       password === this.state.personAuthData.profile[0].password
     ) {
-      Cookies.set("authCookie", "value", { expires: 1 / 96, path: "" });
+      Cookies.set("authCookie", "value", {
+        expires: 1 / 96,
+        path: path,
+        domain: domain,
+      });
       this.setState({ isAuth: true });
     }
   }
