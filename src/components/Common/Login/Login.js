@@ -18,7 +18,12 @@ class Login extends Component {
   }
 
   handleLogout() {
-    Cookies.remove("authCookie");
+    const url = window.location.hostname;
+    console.log(url);
+    Cookies.remove("authCookie", {
+      path: "",
+      domain: url,
+    });
     console.log("inside handlelogout > login.js");
     console.log("cookie value > >" + Cookies.get("authCookie"));
     if (!Cookies.get("authCookie")) {
