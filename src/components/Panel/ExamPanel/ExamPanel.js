@@ -4,6 +4,7 @@ import ExamOverviewPanel from "../../Panel/ExamOverviewPanel/ExamOverviewPanel";
 import PersonCard from "../../Common/PersonCard/PersonCard";
 import LeftMenuBar from "../../Common/LeftMenuBar/LeftMenuBar";
 import { ProgressBar } from "react-bootstrap";
+import QuestionAPI from "../../../apis/common/QuestionAPI";
 import "./ExamPanel.css";
 
 class ExamPanel extends Component {
@@ -14,16 +15,19 @@ class ExamPanel extends Component {
     this.setResultData = this.setResultData.bind(this);
     this.showResultPage = this.showResultPage.bind(this);
     this.progressBarHandler = this.progressBarHandler.bind(this);
+    this.objQuestionAPI = new QuestionAPI();
     this.state = {
       showOverviewPage: false,
       resultData: new Map(),
       showResultPageFlag: false,
       progressBar: 0,
       loaded: false,
+      questionData: [],
     };
   }
 
   setResultData(quesNo, ansObj) {
+    console.log(this.state.resultData);
     this.state.resultData.set(quesNo, ansObj);
   }
   deleteResultData(quesNo) {
@@ -43,6 +47,35 @@ class ExamPanel extends Component {
   }
   componentDidMount() {
     this.setInterval = setInterval(this.progressBarHandler, 100);
+    // this.setState({
+    //   questionData: this.objQuestionAPI.getResults(),
+    // });
+
+    fetch(
+      "http://openjdk-app-exam-genericms.apps.ca-central-1.starter.openshift-online.com/question",
+      {
+        method: "get",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            questionData: result,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
   }
 
   progressBarHandler() {
@@ -57,7 +90,12 @@ class ExamPanel extends Component {
     }
   }
   render() {
-    const QuestionAnsObj = require("../../../apis/stub/QuestionAnswer.json");
+    let QuestionAnsObj;
+    if (this.state.questionData) {
+      QuestionAnsObj = this.state.questionData;
+      console.log(QuestionAnsObj);
+    }
+    // const QuestionAnsObj = require("../../../apis/stub/QuestionAnswer.json");
 
     return !this.state.loaded ? (
       <ProgressBar

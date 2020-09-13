@@ -3,6 +3,8 @@
   width: 10%;
   float: left;
   width: 150px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .menuLook {
@@ -12,7 +14,7 @@
   transition: all 0.3s ease-in-out;
   color: aliceblue;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 35px;
   margin-left: 10px;
 }
 
