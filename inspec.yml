@@ -1,8 +1,0 @@
-name: syslog
-title: Syslogd baseline - InSpec Profile
-maintainer: pavitra71994
-copyright: pavitran71995
-copyright_email: pavitra71994.github.com
-license: All Rights Reserved
-summary: An InSpec Compliance Profile for syslogd
-version: 0.2.0
