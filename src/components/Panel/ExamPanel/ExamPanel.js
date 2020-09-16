@@ -98,7 +98,9 @@ class ExamPanel extends Component {
     // const QuestionAnsObj = require("../../../apis/stub/QuestionAnswer.json");
 
     return !this.state.isLoaded ? (
-      <Spinner animation="grow" />
+      <div className="spinnerPostion">
+        <Spinner animation="grow" variant="danger" />
+      </div>
     ) : (
       <div className="profilePageContainer">
         <div className="examCardContainer">

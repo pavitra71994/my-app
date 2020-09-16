@@ -1,21 +1,48 @@
-.menuPanel {
-  background-color: #3094c0;
-  width: 10%;
-  float: left;
-  width: 150px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+@media screen and (max-width: 500px) {
+  .menuPanel {
+    background-color: #3094c0;
+    width: 10%;
+    float: left;
+    width: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
-.menuLook {
-  cursor: pointer;
-  font-size: 14px;
-  font-family: "Lato", sans-serif;
-  transition: all 0.3s ease-in-out;
-  color: aliceblue;
-  font-weight: 700;
-  line-height: 35px;
-  margin-left: 10px;
+@media screen and (min-width: 501px) {
+  .menuPanel {
+    background-color: #3094c0;
+    width: 20%;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .menuLook {
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Lato", sans-serif;
+    transition: all 0.3s ease-in-out;
+    color: aliceblue;
+    font-weight: 700;
+    line-height: 35px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .menuLook {
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "Lato", sans-serif;
+    transition: all 0.3s ease-in-out;
+    color: aliceblue;
+    font-weight: 700;
+    line-height: 35px;
+    margin-left: 10px;
+  }
 }
 
 .menuLook:hover {

@@ -1,14 +1,24 @@
-.PersonCardContainer {
-  background-color: ghostwhite;
-  background-color: #fcfcfd;
-  /* border: black 2px solid; */
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  /* width: 65%; */
-  text-align: center;
-  display: flex;
+@media screen and (min-width: 501px) {
+  .PersonCardContainer {
+    background-color: #fcfcfd;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .PersonCardContainer {
+    background-color: #fcfcfd;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+  }
 }
 
 .baseCard {
@@ -28,9 +38,18 @@
   margin-top: 7%;
 }
 
-.basicInfoBox {
-  width: 50%;
-  margin-left: 50px;
+@media screen and (min-width: 501px) {
+  .basicInfoBox {
+    width: 50%;
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .basicInfoBox {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 .nameLabel {
@@ -43,9 +62,17 @@
   text-align: left;
 }
 
-.otherDetailLook {
-  color: grey;
-  display: flex;
+@media screen and (min-width: 501px) {
+  .otherDetailLook {
+    color: grey;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .otherDetailLook {
+    color: grey;
+  }
 }
 
 .detailsLook {

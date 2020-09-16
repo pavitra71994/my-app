@@ -17,9 +17,19 @@
   margin: auto;
   margin-top: 20%;
 }
-.innerContainer {
-  background-color: #d1d6da;
-  width: 100%;
+
+@media screen and (min-width: 501px) {
+  .innerContainer {
+    background-color: #d1d6da;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .innerContainer {
+    background-color: #d1d6da;
+    width: 80%;
+  }
 }
 
 .profilePageContainer {
@@ -36,4 +46,10 @@
   margin-bottom: 2%;
   margin-left: 2%;
   margin-right: 2%;
+}
+
+.spinnerPostion {
+  position: fixed;
+  top: 50%;
+  left: 50%;
 }

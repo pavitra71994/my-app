@@ -8,28 +8,63 @@
   border: 2px solid #1976d2;
 }
 
-.quesCardContainer {
-  background-color: #f8f8ff;
-  width: 80%;
-  margin-left: 10px;
-  margin-right: 1%;
+@media screen and (min-width: 501px) {
+  .quesCardContainer {
+    background-color: #f8f8ff;
+    width: 80%;
+    margin-left: 10px;
+    margin-right: 1%;
+  }
 }
 
-.quesCard {
-  margin-bottom: 50px;
-  display: flex;
-  width: 100%;
+@media screen and (max-width: 500px) {
+  .quesCardContainer {
+    background-color: #f8f8ff;
+    width: 94%;
+    height: 87%;
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .quesCard {
+    margin-bottom: 50px;
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .quesCard {
+    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+  }
 }
 
 .quesAnsCard {
   width: 77%;
 }
-.quesLabel {
-  font-size: 24px;
-  font-family: "Lato", sans-serif;
-  margin-top: 2%;
-  width: 400px;
-  line-height: 20px;
+
+@media screen and (min-width: 501px) {
+  .quesLabel {
+    font-size: 24px;
+    font-family: "Lato", sans-serif;
+    margin-top: 2%;
+    width: 400px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .quesLabel {
+    font-size: 22px;
+    font-family: "Lato", sans-serif;
+    margin-top: 6%;
+    width: 400px;
+    line-height: 20px;
+  }
 }
 
 .buttonLookR {
@@ -117,21 +152,42 @@
   margin-left: 5%;
 }
 
-.skewBtn {
-  width: 130px;
-  height: 40px;
-  outline: none;
-  cursor: pointer;
-  background: none;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  font-size: 24px;
-  border-radius: 5px;
-  font-family: "Lato", sans-serif;
-  border: 0px solid #1976d2;
-  color: #1976d2;
-  text-align: justify;
-  margin-right: 5%;
+@media screen and (min-width: 501px) {
+  .skewBtn {
+    width: 130px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 24px;
+    border-radius: 5px;
+    font-family: "Lato", sans-serif;
+    border: 0px solid #1976d2;
+    color: #1976d2;
+    text-align: justify;
+    margin-right: 5%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .skewBtn {
+    width: 130px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: "Lato", sans-serif;
+    border: 0px solid #1976d2;
+    color: #1976d2;
+    text-align: justify;
+    margin-right: 5%;
+  }
 }
 .skewBtn:hover {
   border: none;
@@ -156,11 +212,22 @@
   border: 2px solid #1976d2;
 }
 
-.svgIconBox {
-  width: 25px;
-  height: 25px;
-  margin-top: 1.5%;
-  margin-right: 2%;
+@media screen and (min-width: 501px) {
+  .svgIconBox {
+    width: 25px;
+    height: 25px;
+    margin-top: 1.5%;
+    margin-right: 2%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .svgIconBox {
+    width: 25px;
+    height: 25px;
+    margin-top: 5%;
+    margin-right: 2%;
+  }
 }
 
 .svgQuesContainer {

@@ -10,22 +10,38 @@
   height: 25px;
 }
 
-.sidePanelCardBox {
-  border: 1px grey solid;
-  width: 20%;
-  height: 100%;
-  background-color: #f8f8ff;
+@media screen and (min-width: 501px) {
+  .sidePanelCardBox {
+    border: 1px grey solid;
+    width: 20%;
+    height: 100%;
+    background-color: #f8f8ff;
+  }
 }
 
-.sidePanelContainer {
-  display: flex;
-  /* width: 700px; */
-  /* background-color: #fcfcfd; */
-  margin-right: 10px;
-  /* margin-left: 10px; */
-  height: 300px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+@media screen and (max-width: 500px) {
+  .sidePanelCardBox {
+    border: 1px grey solid;
+    background-color: #f8f8ff;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .sidePanelContainer {
+    display: flex;
+    margin-right: 10px;
+    height: 300px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sidePanelContainer {
+    height: 300px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 }
 
 .quesNoLook {
