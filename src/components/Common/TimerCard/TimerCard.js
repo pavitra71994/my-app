@@ -21,9 +21,9 @@ class TimerCard extends Component {
     let m = Math.floor((d % 3600) / 60);
     let s = Math.floor((d % 3600) % 60);
 
-    let hDisplay = h > 0 ? "0" + h + (h == 1 ? ":" : ":") : "";
-    let mDisplay = m > 0 ? m + (m == 1 ? ":" : ":") : "";
-    let sDisplay = s > 0 ? s + (s == 1 ? "" : "") : "";
+    let hDisplay = h > 0 ? "0" + h + (h === 1 ? ":" : ":") : "";
+    let mDisplay = m > 0 ? m + (m === 1 ? ":" : ":") : "";
+    let sDisplay = s > 0 ? s + (s === 1 ? "" : "") : "";
     return hDisplay + mDisplay + sDisplay;
   }
 
@@ -39,7 +39,7 @@ class TimerCard extends Component {
   render() {
     return (
       <div className="TimerContainer">
-        <img className="stopwatchIconLook" src={stopwatchIcon}></img>
+        <img alt="" className="stopwatchIconLook" src={stopwatchIcon}></img>
         <div className="timerLabel">
           {this.secondsToTime(this.state.countdown)}
         </div>

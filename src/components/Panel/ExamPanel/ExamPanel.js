@@ -3,7 +3,7 @@ import SidePanel from "../../Panel/SidePanel/SidePanel";
 import ExamOverviewPanel from "../../Panel/ExamOverviewPanel/ExamOverviewPanel";
 import PersonCard from "../../Common/PersonCard/PersonCard";
 import LeftMenuBar from "../../Common/LeftMenuBar/LeftMenuBar";
-import { ProgressBar } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import QuestionAPI from "../../../apis/common/QuestionAPI";
 import "./ExamPanel.css";
 
@@ -14,7 +14,7 @@ class ExamPanel extends Component {
     this.deleteResultData = this.deleteResultData.bind(this);
     this.setResultData = this.setResultData.bind(this);
     this.showResultPage = this.showResultPage.bind(this);
-    this.progressBarHandler = this.progressBarHandler.bind(this);
+    // this.progressBarHandler = this.progressBarHandler.bind(this);
     this.objQuestionAPI = new QuestionAPI();
     this.state = {
       showOverviewPage: false,
@@ -46,7 +46,7 @@ class ExamPanel extends Component {
     });
   }
   componentDidMount() {
-    this.setInterval = setInterval(this.progressBarHandler, 100);
+    // this.setInterval = setInterval(this.progressBarHandler, 100);
     // this.setState({
     //   questionData: this.objQuestionAPI.getResults(),
     // });
@@ -78,17 +78,17 @@ class ExamPanel extends Component {
       );
   }
 
-  progressBarHandler() {
-    this.setState((prevState) => ({
-      progressBar: prevState.progressBar + 1,
-    }));
-    if (this.state.progressBar === 100) {
-      clearInterval(this.setInterval);
-      this.setState({
-        loaded: true,
-      });
-    }
-  }
+  // progressBarHandler() {
+  //   this.setState((prevState) => ({
+  //     progressBar: prevState.progressBar + 1,
+  //   }));
+  //   if (this.state.progressBar === 100) {
+  //     clearInterval(this.setInterval);
+  //     this.setState({
+  //       loaded: true,
+  //     });
+  //   }
+  // }
   render() {
     let QuestionAnsObj;
     if (this.state.questionData) {
@@ -97,13 +97,8 @@ class ExamPanel extends Component {
     }
     // const QuestionAnsObj = require("../../../apis/stub/QuestionAnswer.json");
 
-    return !this.state.loaded ? (
-      <ProgressBar
-        className="progressBar"
-        animated
-        now={this.state.progressBar}
-        label={`${this.state.progressBar}%`}
-      />
+    return !this.state.isLoaded ? (
+      <Spinner animation="grow" />
     ) : (
       <div className="profilePageContainer">
         <div className="examCardContainer">

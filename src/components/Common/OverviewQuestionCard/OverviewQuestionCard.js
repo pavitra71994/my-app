@@ -47,18 +47,18 @@ class OverviewQuestionCard extends Component {
         <div className="OverQuesCardQuesLabel">
           {this.props.data.ques.ques}
           {selectedAns ? (
-            <img className="ansUnansBoxLook" src={notAnsIcon}></img>
+            <img alt="" className="ansUnansBoxLook" src={notAnsIcon}></img>
           ) : (
-            <img className="ansUnansBoxLook" src={answeredIcon}></img>
+            <img alt="" className="ansUnansBoxLook" src={answeredIcon}></img>
           )}
         </div>
         <div className="OverQuesCardAnsBox">
           {this.props.data.ques.ansList.map((item) => (
             <div key={item.ans} id={item.ans} className="OverQuesCardAnsLabel">
               {item.isAnsTrue ? (
-                <img className="tickIcon" src={tickIcon}></img>
+                <img alt="" className="tickIcon" src={tickIcon}></img>
               ) : selectedAns === item.ans ? (
-                <img className="tickIcon" src={errorIcon}></img>
+                <img alt="" className="tickIcon" src={errorIcon}></img>
               ) : (
                 <div className="tickIcon"></div>
               )}

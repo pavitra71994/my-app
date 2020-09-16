@@ -23,9 +23,6 @@ class SidePanel extends Component {
   }
   render() {
     const QuestionAnsObj = this.props.data.QuestionAnsObj;
-    console.log("ani" + QuestionAnsObj.questionAns.length);
-    console.log("render" + this.state.quesNumber);
-    let quesNoLook;
 
     return this.props.data.showResultPageFlag ? (
       <ResultCard
@@ -62,7 +59,6 @@ class SidePanel extends Component {
               <div
                 key={item.quesNo}
                 id={item.quesNo}
-                class="quesNo"
                 className={this.toggleQuesClr(item.quesNo)}
                 onClick={(e) => this.openQuestionCard(item.quesNo)}
               >

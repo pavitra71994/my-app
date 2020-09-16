@@ -1,15 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import Login from "./components/Common/Login/Login";
-import EmergencyCard from "./components/Common/EmergencyCard/EmergencyCard";
+// import EmergencyCard from "./components/Common/EmergencyCard/EmergencyCard";
 
 ReactDOM.render(
   <React.StrictMode>
     <Login />
-    <EmergencyCard />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "./PersonCard.css";
 import image from "../../../svgIcons/16.jpg";
-import UberReactVisComp from "../UberReactVisComp/UberReactVisComp";
+// import UberReactVisComp from "../UberReactVisComp/UberReactVisComp";
 
 class PersonCard extends Component {
   render() {
     return (
       <div className="PersonCardContainer">
         <div className="imgBox">
-          <img src={image}></img>
+          <img alt="" src={image}></img>
         </div>
         <div className="basicInfoBox">
           <div className="nameLabel">Pavitra Kumar Nayak</div>

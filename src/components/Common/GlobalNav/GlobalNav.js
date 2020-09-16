@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Navbar,
-  NavDropdown,
-  Nav,
-  Form,
-  Button,
-  FormControl,
-} from "react-bootstrap";
+import { Navbar, NavDropdown, Nav, Button } from "react-bootstrap";
 import Cookies from "js-cookie";
 
 class GlobalNav extends Component {
