@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
 import ExamPanel from "../../Panel/ExamPanel/ExamPanel";
-import LoginForm from "../LoginForm/LoginForm";
 import GlobalNav from "../../Common/GlobalNav/GlobalNav";
+import LoginForm from "../../Common/LoginForm/LoginForm";
+import "./Login.css";
 const PersonResponse = require("../../../apis/stub/profiledata.json");
 
 class Login extends Component {
@@ -70,7 +71,9 @@ class Login extends Component {
         {this.state.isAuth ? (
           <ExamPanel />
         ) : (
-          <LoginForm loginHandler={this.handleLogin} />
+          <div className="bkImg">
+            <LoginForm loginHandler={this.handleLogin} />
+          </div>
         )}
       </div>
     );

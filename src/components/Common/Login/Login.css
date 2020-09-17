@@ -1,0 +1,9 @@
+.bkImg {
+  background-image: url(../../../imageAssests/books-690219.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 92%;
+  width: 100%;
+  position: absolute;
+}
