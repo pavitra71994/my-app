@@ -52,7 +52,7 @@ class ExamPanel extends Component {
     // });
 
     fetch(
-      "https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com//question",
+      "https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/quiz/v1/question",
       {
         method: "get",
         headers: new Headers({
