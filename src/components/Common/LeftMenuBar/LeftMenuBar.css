@@ -6,33 +6,34 @@
     width: 150px;
     padding-top: 10px;
     padding-bottom: 10px;
+    display: none;
   }
-}
-
-@media screen and (min-width: 501px) {
-  .menuPanel {
+  .dekstopContainer {
+    width: auto;
+  }
+  .menuPanelMobile {
     background-color: #3094c0;
-    width: 20%;
+    width: 100%;
     float: left;
     padding-top: 10px;
     padding-bottom: 10px;
   }
-}
 
-@media screen and (min-width: 501px) {
-  .menuLook {
+  .menuLookMobile {
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-family: "Lato", sans-serif;
     transition: all 0.3s ease-in-out;
     color: aliceblue;
     font-weight: 700;
     line-height: 35px;
-    margin-left: 10px;
+    padding-left: 10px;
   }
-}
 
-@media screen and (max-width: 500px) {
+  .menuLookMobile:hover {
+    background-color: #0575ac;
+  }
+
   .menuLook {
     cursor: pointer;
     font-size: 12px;
@@ -42,6 +43,43 @@
     font-weight: 700;
     line-height: 35px;
     margin-left: 10px;
+  }
+  .menuIconLook {
+    width: 30px;
+    position: absolute;
+    margin-top: 1.4%;
+    margin-left: 3%;
+    cursor: pointer;
+  }
+  .menuIconContainer {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .menuPanel {
+    background-color: #3094c0;
+    width: 100%;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .dekstopContainer {
+    width: 20%;
+  }
+
+  .menuLook {
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Lato", sans-serif;
+    transition: all 0.3s ease-in-out;
+    color: aliceblue;
+    font-weight: 700;
+    line-height: 35px;
+    padding-left: 10px;
+  }
+  .menuIconLook {
+    display: none;
   }
 }
 

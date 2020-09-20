@@ -1,0 +1,12 @@
+{
+  "objSendMailRequest": {
+    "toEmail": "pavitrank1@gmail.com",
+    "fromMail": "steelshootgaming@gmail.com",
+    "messageBody": "Correct -0\nInCorrect - 1\nUnAttempted - 5\nResult - 45%\n",
+    "subjectLine": "Test Result"
+  },
+  "objErrorDTO": {
+    "errorCode": "201",
+    "errorMsg": "Success"
+  }
+}

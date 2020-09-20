@@ -1,0 +1,13 @@
+.modalContainer {
+  width: 35%;
+  background: none;
+}
+
+.modalBodyLook {
+  padding: 0px;
+}
+
+.modalContainerLook {
+  padding-left: 0px;
+  padding-right: 0px;
+}

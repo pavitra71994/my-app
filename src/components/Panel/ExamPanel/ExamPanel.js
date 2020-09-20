@@ -93,7 +93,6 @@ class ExamPanel extends Component {
     let QuestionAnsObj;
     if (this.state.questionData) {
       QuestionAnsObj = this.state.questionData;
-      console.log(QuestionAnsObj);
     }
     // const QuestionAnsObj = require("../../../apis/stub/QuestionAnswer.json");
 
@@ -104,7 +103,10 @@ class ExamPanel extends Component {
     ) : (
       <div className="profilePageContainer">
         <div className="examCardContainer">
-          <LeftMenuBar showExamOverviewHandler={this.showExamOverview} />
+          <LeftMenuBar
+            showExamOverviewHandler={this.showExamOverview}
+            data={{ showOverviewPageFlag: this.state.showOverviewPage }}
+          />
 
           {this.state.showOverviewPage && this.state.showResultPageFlag ? (
             <div className="innerContainer">

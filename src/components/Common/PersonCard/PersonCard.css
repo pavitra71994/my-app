@@ -2,7 +2,7 @@
   .PersonCardContainer {
     background-color: #fcfcfd;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 1%;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
@@ -14,7 +14,7 @@
   .PersonCardContainer {
     background-color: #fcfcfd;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 1%;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
@@ -26,16 +26,46 @@
   flex-wrap: wrap;
 }
 
-.imgBox {
-  width: 20%;
+@media screen and (min-width: 501px) {
+  .imgBox {
+    width: 20%;
+  }
+  .imgBox img {
+    width: 150px;
+    height: 150px;
+    margin-left: 12%;
+    border-radius: 80px;
+    margin-top: 7%;
+  }
+  .nameLabel {
+    color: #3094c0;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 20px;
+    text-align: left;
+  }
 }
 
-.imgBox img {
-  width: 150px;
-  height: 150px;
-  margin-left: 12%;
-  border-radius: 80px;
-  margin-top: 7%;
+@media screen and (max-width: 500px) {
+  .imgBox {
+    width: 100%;
+  }
+  .imgBox img {
+    width: 100px;
+    height: 100px;
+    border-radius: 80px;
+    margin-top: 7%;
+  }
+  .nameLabel {
+    color: #3094c0;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 501px) {
@@ -52,39 +82,39 @@
   }
 }
 
-.nameLabel {
-  color: #3094c0;
-  font-family: sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  margin-top: 10px;
-  margin-left: 20px;
-  text-align: left;
-}
-
 @media screen and (min-width: 501px) {
   .otherDetailLook {
     color: grey;
     display: flex;
+  }
+  .dateLook {
+    color: grey;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 20px;
+    text-align: left;
   }
 }
 
 @media screen and (max-width: 500px) {
   .otherDetailLook {
     color: grey;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 11px;
+  }
+  .dateLook {
+    color: grey;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: center;
   }
 }
 
 .detailsLook {
   margin-left: 20px;
-}
-
-.dateLook {
-  color: grey;
-  font-family: sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  margin-top: 10px;
-  margin-left: 20px;
-  text-align: left;
 }
