@@ -27,7 +27,7 @@ class SidePanel extends Component {
     return this.props.data.showResultPageFlag ? (
       <ResultCard
         data={{
-          result: this.ApplicationHelper.getResult(this.props.data.resultData),
+          result: this.props.data.resultData,
         }}
       />
     ) : (

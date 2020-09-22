@@ -1,5 +1,5 @@
-import { Component } from "react";
-const QuestionAnsObj = require("../apis/stub/QuestionAnswer.json");
+import React, { Component } from "react";
+// const QuestionAnsObj = require("../apis/stub/QuestionAnswer.json");
 
 class SidePanel extends Component {
   getQuestionFromList(quesNo: any, QuestionAnsObj: any) {
@@ -14,7 +14,7 @@ class SidePanel extends Component {
     return QuestionAnsData;
   }
 
-  getResult(answeredQuesData: any) {
+  async getResult(answeredQuesData: any) {
     let counter = 0;
     let resultDataObj = {
       correctAns: 0,
@@ -22,7 +22,28 @@ class SidePanel extends Component {
       unAnsweredQues: 0,
     };
 
-    QuestionAnsObj.questionAns.map((value: any) => {
+    // const uri = "http://localhost:8080/quiz/v1/question";
+    const uri = `https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/quiz/v1/question`;
+
+    fetch(uri, {
+      method: "get",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        serviceType: "checkResult",
+      }),
+    });
+    const response = await fetch(uri, {
+      method: "get",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        serviceType: "checkResult",
+      }),
+    });
+    const res = await response.json();
+    console.log("QUESTION>>>" + res.questionAns);
+    res.questionAns.map((value: any) => {
       const ques = value.quesNo;
       let ans = "";
       value.ansList.map((ansObj: any) => {
@@ -43,9 +64,9 @@ class SidePanel extends Component {
       correctAns: counter,
       wrongAns: answeredQuesData.size - counter,
       unAnsweredQues:
-        QuestionAnsObj.questionAns.length -
-        (counter + (answeredQuesData.size - counter)),
+        res.questionAns.length - (counter + (answeredQuesData.size - counter)),
     };
+    console.log("resultDataObj>>>" + JSON.stringify(resultDataObj));
     return resultDataObj;
   }
 

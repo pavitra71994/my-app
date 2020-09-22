@@ -52,11 +52,19 @@ class LoginForm extends Component {
           <Button
             variant="primary"
             type="submit"
+            className="buttonLookLogin"
             onClick={() =>
               this.props.loginHandler(this.state.email, this.state.password)
             }
           >
             Submit
+          </Button>
+          <Button
+            variant="primary"
+            className="buttonLookregister"
+            onClick={this.props.registerHandler}
+          >
+            New User? Register
           </Button>
         </Form>
       </div>

@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import ExamPanel from "../../Panel/ExamPanel/ExamPanel";
 import GlobalNav from "../../Common/GlobalNav/GlobalNav";
 import LoginForm from "../../Common/LoginForm/LoginForm";
+import Register from "../../Common/Register/Register";
 import "./Login.css";
 const PersonResponse = require("../../../apis/stub/profiledata.json");
 
@@ -13,9 +14,11 @@ class Login extends Component {
       isAuth: false,
       isLoaded: false,
       personAuthData: {},
+      showRegistrationPageFlag: false,
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.registerHandler = this.registerHandler.bind(this);
   }
 
   handleLogout() {
@@ -34,6 +37,13 @@ class Login extends Component {
       );
       this.setState({ isAuth: false });
     }
+  }
+
+  registerHandler() {
+    this.setState({
+      showRegistrationPageFlag: true,
+    });
+    console.log("register");
   }
 
   componentDidMount() {
@@ -70,10 +80,15 @@ class Login extends Component {
         />
         {this.state.isAuth ? (
           <ExamPanel />
-        ) : (
+        ) : !this.state.showRegistrationPageFlag ? (
           <div className="bkImg">
-            <LoginForm loginHandler={this.handleLogin} />
+            <LoginForm
+              loginHandler={this.handleLogin}
+              registerHandler={this.registerHandler}
+            />
           </div>
+        ) : (
+          <Register />
         )}
       </div>
     );

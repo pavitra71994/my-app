@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./ResultCard.css";
 import ReactPie from "../ReactPie/ReactPie";
+import ApplicationHelper from "../../../util/ApplicationHelper";
+import { Spinner } from "react-bootstrap";
 const sendResultMailstub = require("../../../apis/stub/sendResultMailstub.json");
 
 class ResultCard extends Component {
@@ -9,13 +11,28 @@ class ResultCard extends Component {
     this.state = {
       isMailSent: false,
       displayMsg: "Sending Mail...",
+      isloaded: false,
+      resultData: {},
     };
+    this.ApplicationHelper = new ApplicationHelper();
+    this.initialise();
+  }
+
+  async initialise() {
+    const resultValue = await this.ApplicationHelper.getResult(
+      this.props.data.result
+    );
+    console.log("resultValue" + JSON.stringify(resultValue));
+    this.setState({
+      resultData: resultValue,
+      isloaded: Object.keys(resultValue).length !== 0 ? true : false,
+    });
   }
   componentDidMount() {
     const data = {
-      correctAns: this.props.data.result.correctAns,
-      incorrectAns: this.props.data.result.wrongAns,
-      unattemptedQues: this.props.data.result.unAnsweredQues,
+      correctAns: this.state.resultData.correctAns,
+      incorrectAns: this.state.resultData.wrongAns,
+      unattemptedQues: this.state.resultData.unAnsweredQues,
       result: "45%",
       objSendMailRequest: {
         toEmail: "pavitrank1@gmail.com",
@@ -53,7 +70,7 @@ class ResultCard extends Component {
       .catch((error) => {
         console.error("Error:", error);
         this.setState({
-          isLoaded: true,
+          isMailSent: true,
           displayMsg: "Email not Sent",
         });
       });
@@ -61,12 +78,12 @@ class ResultCard extends Component {
 
   render() {
     const resultObj = [
-      { name: "Correct", value: this.props.data.result.correctAns },
-      { name: "Wrong", value: this.props.data.result.wrongAns },
-      { name: "UnAnswered", value: this.props.data.result.unAnsweredQues },
+      { name: "Correct", value: this.state.resultData.correctAns },
+      { name: "Wrong", value: this.state.resultData.wrongAns },
+      { name: "UnAnswered", value: this.state.resultData.unAnsweredQues },
     ];
 
-    return (
+    return this.state.isloaded ? (
       <div className="resultCard">
         <div className="resultBoxLook">
           <ReactPie data={{ resultObj }} />
@@ -75,6 +92,10 @@ class ResultCard extends Component {
           <div className="passFailLabel">Pass</div>
           <div className="emailLabel">{this.state.displayMsg}</div>
         </div>
+      </div>
+    ) : (
+      <div className="spinnerLook">
+        <Spinner animation="border" variant="warning" />
       </div>
     );
   }

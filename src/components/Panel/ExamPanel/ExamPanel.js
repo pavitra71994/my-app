@@ -50,17 +50,17 @@ class ExamPanel extends Component {
     // this.setState({
     //   questionData: this.objQuestionAPI.getResults(),
     // });
+    // const uri = "http://localhost:8080/quiz/v1/question";
+    const uri = `https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/quiz/v1/question`;
 
-    fetch(
-      "https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/quiz/v1/question",
-      {
-        method: "get",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        }),
-      }
-    )
+    fetch(uri, {
+      method: "get",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        serviceType: "showQuestion",
+      }),
+    })
       .then((res) => res.json())
       .then(
         (result) => {
