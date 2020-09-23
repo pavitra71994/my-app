@@ -20,6 +20,7 @@ class SidePanel extends Component {
       correctAns: 0,
       wrongAns: 0,
       unAnsweredQues: 0,
+      percentage: 0,
     };
 
     // const uri = "http://localhost:8080/quiz/v1/question";
@@ -65,6 +66,7 @@ class SidePanel extends Component {
       wrongAns: answeredQuesData.size - counter,
       unAnsweredQues:
         res.questionAns.length - (counter + (answeredQuesData.size - counter)),
+      percentage: (counter / res.questionAns.length) * 100,
     };
     console.log("resultDataObj>>>" + JSON.stringify(resultDataObj));
     return resultDataObj;

@@ -124,6 +124,10 @@ class QuestionCard extends Component {
         </div>
         {this.state.show ? (
           <Modal
+            data={{
+              totalQues: this.props.data.quesNo,
+              answeredQues: this.props.data.resultData.size,
+            }}
             show={this.state.show}
             handleClose={this.hideModal}
             showPage={() =>

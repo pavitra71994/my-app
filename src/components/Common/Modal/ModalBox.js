@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./ModalBox.css";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Row, Col, Container } from "react-bootstrap";
+import TableComp from "../TableComp";
 
 class ModalBox extends Component {
   render() {
@@ -15,9 +16,16 @@ class ModalBox extends Component {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Do You Want to Submit?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>R u Sure....!!!! escape key.</Modal.Body>
+        <Modal.Body className="show-grid">
+          <TableComp
+            data={{
+              totalQues: this.props.data.totalQues,
+              answeredQues: this.props.data.answeredQues,
+            }}
+          />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
