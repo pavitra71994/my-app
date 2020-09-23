@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Button, Form } from "react-bootstrap";
+import Register from "../Register";
 import "./LoginForm.css";
 
 class LoginForm extends Component {
@@ -8,9 +9,12 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       email: "",
+      show: false,
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.modalShow = this.modalShow.bind(this);
+    this.onHide = this.onHide.bind(this);
   }
   handleEmailChange = (e) => {
     this.setState({ email: e.target.value });
@@ -19,6 +23,20 @@ class LoginForm extends Component {
   handlePasswordChange = (e) => {
     this.setState({ password: e.target.value });
   };
+
+  modalShow() {
+    console.log("clicked1");
+    this.setState({
+      show: true,
+    });
+  }
+
+  onHide() {
+    console.log("clicked");
+    this.setState({
+      show: false,
+    });
+  }
 
   render() {
     return (
@@ -61,14 +79,19 @@ class LoginForm extends Component {
               Submit
             </Button>
             <Button
-              variant="primary"
+              variant="success"
               className="buttonLookregister"
-              onClick={this.props.registerHandler}
+              onClick={this.modalShow}
             >
               New User? Register
             </Button>
           </div>
         </Form>
+        {this.state.show ? (
+          <Register show={this.modalShow} onHide={this.onHide} />
+        ) : (
+          ""
+        )}
       </div>
     );
   }

@@ -80,15 +80,15 @@ class Login extends Component {
         />
         {this.state.isAuth ? (
           <ExamPanel />
-        ) : !this.state.showRegistrationPageFlag ? (
+        ) : !this.state.show ? (
           <div className="bkImg">
             <LoginForm
               loginHandler={this.handleLogin}
-              registerHandler={this.registerHandler}
+              registerHandler={this.modalShow}
             />
           </div>
         ) : (
-          <Register />
+          ""
         )}
       </div>
     );
