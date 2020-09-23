@@ -24,7 +24,7 @@ class ResultCard extends Component {
     console.log("resultValue" + JSON.stringify(resultValue));
     this.setState({
       resultData: resultValue,
-      isloaded: Object.keys(resultValue).length !== 0 ? false : false,
+      isloaded: Object.keys(resultValue).length !== 0 ? true : false,
     });
   }
 
