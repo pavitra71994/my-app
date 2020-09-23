@@ -27,7 +27,7 @@ class SendResultMailComp extends Component {
     };
     try {
       fetch(
-        "https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/quiz/v1/sendResultMai",
+        "https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/quiz/v1/sendResultMail",
         {
           // mode: "no-cors",
           method: "POST",
