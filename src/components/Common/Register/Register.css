@@ -48,3 +48,10 @@
 .backdropClassName {
   opacity: 0.2 !important;
 }
+
+.validationErrorLook {
+  font-size: 10px;
+  font-family: "Franklin Gothic Medium";
+  font-weight: bold;
+  color: red;
+}
