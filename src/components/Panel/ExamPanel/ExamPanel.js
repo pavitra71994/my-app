@@ -118,7 +118,9 @@ class ExamPanel extends Component {
             </div>
           ) : (
             <div className="innerContainer">
-              <PersonCard></PersonCard>
+              <PersonCard
+                data={{ personAuthData: this.props.data.personAuthData }}
+              />
               <SidePanel
                 data={{
                   QuestionAnsObj,

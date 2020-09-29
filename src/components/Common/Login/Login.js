@@ -46,30 +46,30 @@ class Login extends Component {
     console.log("register");
   }
 
-  componentDidMount() {
-    if (Cookies.get("authCookie")) {
-      console.log(Cookies.get("authCookie"));
-      this.setState({ isAuth: true });
-    }
+  // componentDidMount() {
+  //   if (Cookies.get("authCookie")) {
+  //     console.log(Cookies.get("authCookie"));
+  //     this.setState({ isAuth: true });
+  //   }
 
-    fetch("https://api.example.com/itemsw")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            personAuthData: result,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            personAuthData: PersonResponse,
-            error,
-          });
-        }
-      );
-  }
+  //   fetch("https://api.example.com/itemsw")
+  //     .then((res) => res.json())
+  //     .then(
+  //       (result) => {
+  //         this.setState({
+  //           isLoaded: true,
+  //           personAuthData: result,
+  //         });
+  //       },
+  //       (error) => {
+  //         this.setState({
+  //           isLoaded: true,
+  //           personAuthData: PersonResponse,
+  //           error,
+  //         });
+  //       }
+  //     );
+  // }
 
   render() {
     return (
@@ -79,13 +79,14 @@ class Login extends Component {
           handleLogin={this.handleLogin}
         />
         {this.state.isAuth ? (
-          <ExamPanel />
+          <ExamPanel data={{ personAuthData: this.state.personAuthData }} />
         ) : !this.state.show ? (
           <div className="bkImg">
             <LoginForm
               loginHandler={this.handleLogin}
               registerHandler={this.modalShow}
             />
+            <button onClick={this.loginApiCallHandler}>Generate</button>
           </div>
         ) : (
           ""
@@ -94,22 +95,89 @@ class Login extends Component {
     );
   }
 
-  handleLogin(email, password) {
+  async loginApiCallHandler(email, password) {
+    const uri =
+      `https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/common/v1/user/filter?` +
+      "emailId=" +
+      email +
+      "&" +
+      "password=" +
+      password;
+    try {
+      const response = await fetch(uri, {
+        method: "get",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          rootuser: "ragnar",
+        }),
+      });
+      const res = await response.json();
+      if (res.objErrorDTO.errorCode === "200") {
+        this.setState({
+          personAuthData: res,
+        });
+      } else {
+        this.setState({
+          personAuthData: res,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async handleLogin(email, password) {
     const domain = window.location.hostname;
     const path = window.location.pathname;
+    // this.loginApiCallHandler(email, password);
+    const uri =
+      `https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/common/v1/user/filter?` +
+      "emailId=" +
+      email +
+      "&" +
+      "password=" +
+      password;
+    try {
+      const response = await fetch(uri, {
+        method: "get",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          rootuser: "ragnar",
+        }),
+      });
+      const res = await response.json();
+      if (res.objErrorDTO.errorCode === "200") {
+        this.setState({
+          personAuthData: res,
+        });
+      } else {
+        this.setState({
+          personAuthData: res,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    console.log("inserted");
     if (
       email &&
       password &&
       this.state.personAuthData &&
-      this.state.personAuthData.profile &&
-      email === this.state.personAuthData.profile[0].email &&
-      password === this.state.personAuthData.profile[0].password
+      this.state.personAuthData.objUser &&
+      email === this.state.personAuthData.objUser[0].emailId &&
+      password === this.state.personAuthData.objUser[0].password
     ) {
-      Cookies.set("authCookie", "value", {
-        expires: 1 / 96,
-        path: path,
-        domain: domain,
-      });
+      Cookies.set(
+        "authCookie",
+        this.state.personAuthData.objUser[0].authToken,
+        {
+          expires: 1 / 96,
+          path: path,
+          domain: domain,
+        }
+      );
       this.setState({ isAuth: true });
     }
   }

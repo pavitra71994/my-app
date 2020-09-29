@@ -70,7 +70,6 @@ class LoginForm extends Component {
           <div className="ButtonBoxLoginPage">
             <Button
               variant="primary"
-              type="submit"
               className="buttonLookLogin"
               onClick={() =>
                 this.props.loginHandler(this.state.email, this.state.password)
