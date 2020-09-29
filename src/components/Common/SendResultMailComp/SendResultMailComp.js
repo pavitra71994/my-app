@@ -18,7 +18,7 @@ class SendResultMailComp extends Component {
       correctAns: this.props.data.correctAns,
       incorrectAns: this.props.data.wrongAns,
       unattemptedQues: this.props.data.unAnsweredQues,
-      result: "45%",
+      result: this.calculateResultLabel(),
       objSendMailRequest: {
         toEmail: "pavitrank1@gmail.com",
         fromMail: "steelshootgaming@gmail.com",
