@@ -46,30 +46,40 @@ class Login extends Component {
     console.log("register");
   }
 
-  // componentDidMount() {
-  //   if (Cookies.get("authCookie")) {
-  //     console.log(Cookies.get("authCookie"));
-  //     this.setState({ isAuth: true });
-  //   }
+  async componentDidMount() {
+    const cookieValue = Cookies.get("authCookie");
+    if (cookieValue) {
+      console.log("cookieValue" + cookieValue);
+    }
 
-  //   fetch("https://api.example.com/itemsw")
-  //     .then((res) => res.json())
-  //     .then(
-  //       (result) => {
-  //         this.setState({
-  //           isLoaded: true,
-  //           personAuthData: result,
-  //         });
-  //       },
-  //       (error) => {
-  //         this.setState({
-  //           isLoaded: true,
-  //           personAuthData: PersonResponse,
-  //           error,
-  //         });
-  //       }
-  //     );
-  // }
+    const uri =
+      `https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/common/v1/user/filter?` +
+      "authCookie=" +
+      cookieValue;
+    try {
+      const response = await fetch(uri, {
+        method: "get",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          rootuser: "ragnar",
+        }),
+      });
+      const res = await response.json();
+      if (res.objErrorDTO.errorCode === "201") {
+        this.setState({
+          personAuthData: res,
+          isAuth: true,
+        });
+      } else {
+        this.setState({
+          personAuthData: res,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   render() {
     return (
@@ -148,7 +158,7 @@ class Login extends Component {
         }),
       });
       const res = await response.json();
-      if (res.objErrorDTO.errorCode === "200") {
+      if (res.objErrorDTO.errorCode === "201") {
         this.setState({
           personAuthData: res,
         });
@@ -173,7 +183,7 @@ class Login extends Component {
         "authCookie",
         this.state.personAuthData.objUser[0].authToken,
         {
-          expires: 1 / 96,
+          expires: 3 / 96,
           path: path,
           domain: domain,
         }
