@@ -126,6 +126,7 @@ class ExamPanel extends Component {
                   QuestionAnsObj,
                   resultData: this.state.resultData,
                   showResultPageFlag: this.state.showResultPageFlag,
+                  personAuthData: this.props.data.personAuthData,
                 }}
                 deleteResultData={this.deleteResultData}
                 setResultData={this.setResultData}

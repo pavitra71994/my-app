@@ -15,6 +15,8 @@ class Login extends Component {
       isLoaded: false,
       personAuthData: {},
       showRegistrationPageFlag: false,
+      isLoginButtonClicked: false,
+      displayMsg: "",
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -95,8 +97,11 @@ class Login extends Component {
             <LoginForm
               loginHandler={this.handleLogin}
               registerHandler={this.modalShow}
+              data={{
+                isLoginButtonClicked: this.state.isLoginButtonClicked,
+                displayMsg: this.state.displayMsg,
+              }}
             />
-            <button onClick={this.loginApiCallHandler}>Generate</button>
           </div>
         ) : (
           ""
@@ -105,39 +110,10 @@ class Login extends Component {
     );
   }
 
-  async loginApiCallHandler(email, password) {
-    const uri =
-      `https://secureroute-genericms.apps.ca-central-1.starter.openshift-online.com/common/v1/user/filter?` +
-      "emailId=" +
-      email +
-      "&" +
-      "password=" +
-      password;
-    try {
-      const response = await fetch(uri, {
-        method: "get",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          rootuser: "ragnar",
-        }),
-      });
-      const res = await response.json();
-      if (res.objErrorDTO.errorCode === "200") {
-        this.setState({
-          personAuthData: res,
-        });
-      } else {
-        this.setState({
-          personAuthData: res,
-        });
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   async handleLogin(email, password) {
+    this.setState({
+      isLoginButtonClicked: true,
+    });
     const domain = window.location.hostname;
     const path = window.location.pathname;
     // this.loginApiCallHandler(email, password);
@@ -157,14 +133,16 @@ class Login extends Component {
           rootuser: "ragnar",
         }),
       });
-      const res = await response.json();
-      if (res.objErrorDTO.errorCode === "201") {
+
+      if (response.status === 200) {
+        const res = await response.json();
         this.setState({
           personAuthData: res,
         });
-      } else {
+      } else if (response.status === 204) {
         this.setState({
-          personAuthData: res,
+          isLoginButtonClicked: false,
+          displayMsg: "Email not Registered",
         });
       }
     } catch (e) {

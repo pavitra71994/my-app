@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import Register from "../Register";
 import "./LoginForm.css";
 
@@ -68,15 +68,28 @@ class LoginForm extends Component {
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group>
           <div className="ButtonBoxLoginPage">
-            <Button
-              variant="primary"
-              className="buttonLookLogin"
-              onClick={() =>
-                this.props.loginHandler(this.state.email, this.state.password)
-              }
-            >
-              Submit
-            </Button>
+            {!this.props.data.isLoginButtonClicked ? (
+              <Button
+                variant="primary"
+                className="buttonLookLogin"
+                onClick={() =>
+                  this.props.loginHandler(this.state.email, this.state.password)
+                }
+              >
+                Login
+              </Button>
+            ) : (
+              <Button variant="primary" className="buttonLookLogin" disabled>
+                Login
+                <Spinner
+                  as="span"
+                  size="sm"
+                  role="status"
+                  animation="border"
+                  variant="light"
+                />
+              </Button>
+            )}
             <Button
               variant="success"
               className="buttonLookregister"
@@ -84,6 +97,13 @@ class LoginForm extends Component {
             >
               New User? Register
             </Button>
+            {this.props.data.displayMsg ? (
+              <div className="loginValidatitonErrorLook">
+                {this.props.data.displayMsg}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </Form>
         {this.state.show ? (

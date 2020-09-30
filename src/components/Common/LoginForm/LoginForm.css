@@ -54,3 +54,8 @@
 .ButtonBoxLoginPage {
   display: grid;
 }
+
+.loginValidatitonErrorLook {
+  color: whitesmoke;
+  text-align: center;
+}

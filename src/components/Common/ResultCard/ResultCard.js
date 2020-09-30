@@ -47,6 +47,7 @@ class ResultCard extends Component {
               wrongAns: this.state.resultData.wrongAns,
               unAnsweredQues: this.state.resultData.unAnsweredQues,
               percentage: this.state.resultData.percentage,
+              personAuthData: this.props.data.personAuthData,
             }}
           />
         </div>

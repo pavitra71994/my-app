@@ -20,7 +20,7 @@ class SendResultMailComp extends Component {
       unattemptedQues: this.props.data.unAnsweredQues,
       result: this.calculateResultLabel(),
       objSendMailRequest: {
-        toEmail: "pavitrank1@gmail.com",
+        toEmail: this.props.data.personAuthData.objUser[0].emailId,
         fromMail: "steelshootgaming@gmail.com",
         subjectLine: "Test Result",
       },

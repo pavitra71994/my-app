@@ -28,6 +28,7 @@ class SidePanel extends Component {
       <ResultCard
         data={{
           result: this.props.data.resultData,
+          personAuthData: this.props.data.personAuthData,
         }}
       />
     ) : (
