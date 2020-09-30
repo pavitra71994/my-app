@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/my-app/static/css/main.1a717bd5.chunk.css",
+    "main.js": "/my-app/static/js/main.6e20f803.chunk.js",
+    "main.js.map": "/my-app/static/js/main.6e20f803.chunk.js.map",
+    "runtime-main.js": "/my-app/static/js/runtime-main.58a6d01e.js",
+    "runtime-main.js.map": "/my-app/static/js/runtime-main.58a6d01e.js.map",
+    "static/js/2.cfb7070c.chunk.js": "/my-app/static/js/2.cfb7070c.chunk.js",
+    "static/js/2.cfb7070c.chunk.js.map": "/my-app/static/js/2.cfb7070c.chunk.js.map",
+    "index.html": "/my-app/index.html",
+    "precache-manifest.06babd4d301e50b65d46b5e4700b10db.js": "/my-app/precache-manifest.06babd4d301e50b65d46b5e4700b10db.js",
+    "service-worker.js": "/my-app/service-worker.js",
+    "static/css/main.1a717bd5.chunk.css.map": "/my-app/static/css/main.1a717bd5.chunk.css.map",
+    "static/js/2.cfb7070c.chunk.js.LICENSE.txt": "/my-app/static/js/2.cfb7070c.chunk.js.LICENSE.txt",
+    "static/media/16.jpg": "/my-app/static/media/16.1612bffb.jpg",
+    "static/media/answered.svg": "/my-app/static/media/answered.972884aa.svg",
+    "static/media/Login.css": "/my-app/static/media/books-690219.1f4838d9.jpg",
+    "static/media/check.svg": "/my-app/static/media/check.1e7e8411.svg",
+    "static/media/error.svg": "/my-app/static/media/error.32dca033.svg",
+    "static/media/help.svg": "/my-app/static/media/help.6b210207.svg",
+    "static/media/list.svg": "/my-app/static/media/list.e6541639.svg",
+    "static/media/rec.svg": "/my-app/static/media/rec.797d5a5c.svg",
+    "static/media/stopwatch.svg": "/my-app/static/media/stopwatch.bd3e556a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.58a6d01e.js",
+    "static/js/2.cfb7070c.chunk.js",
+    "static/css/main.1a717bd5.chunk.css",
+    "static/js/main.6e20f803.chunk.js"
+  ]
+}
